@@ -4,18 +4,19 @@ import { storiesOf } from '@storybook/react';
 import { action }    from '@storybook/addon-actions';
 import { linkTo }    from '@storybook/addon-links';
 
-import { Welcome } from '@storybook/react/demo';
-import Button from "../src/features/common/Button";
+import {muiTheme} from 'storybook-addon-material-ui';
 
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
+import { Welcome } from '@storybook/react/demo';
+// import Button from "../src/features/common/Button";
+import Button from '@material-ui/core/Button';
 
 storiesOf("Button", module)
-  .add("active with fill", () => (
-    <Button label={`continue`} fill={true} active={true} />
+  .addDecorator(muiTheme())
+  .add("primary button", () => (
+    <Button color="primary" variant="contained">
+      Link
+    </Button>
   ))
-  .add("active with no fill", () => (
-    <Button label={`sign up`} fill={false} active={true} />
-  ))
-  .add("disabled", () => <Button label={`continue`} active={false} />);
+  .add("disabled", () => <Button disabled="true" variant="contained">Disabled stuff</Button>);
 
 storiesOf('Label', module).add('normal', () => <Label name={"Hello, World"} />);
