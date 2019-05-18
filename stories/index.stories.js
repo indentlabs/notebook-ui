@@ -6,6 +6,16 @@ import { muiTheme } from 'storybook-addon-material-ui';
 import Navbar from "../src/features/common/Navbar";
 import Button from '@material-ui/core/Button';
 
+const universe = {
+  id: 1,
+  name: "My Super Sweet Universe"
+};
+
+const user = {
+  id: 1,
+  name: "Andrew"
+};
+
 storiesOf("Button", module)
   .addDecorator(muiTheme())
   .add("primary button", () => (
@@ -17,6 +27,12 @@ storiesOf("Button", module)
 
 storiesOf("Navbar", module)
   .addDecorator(muiTheme())
-  .add("logged in user", () => (
+  .add("logged out user", () => (
     <Navbar />
+  ))
+  .add("logged in user", () => (
+    <Navbar user="User object" />
+  ))
+  .add("filtered to universe", () => (
+    <Navbar user={user} universe={universe} />
   ))

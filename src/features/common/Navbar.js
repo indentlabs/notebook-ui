@@ -11,11 +11,13 @@ import Menu from '@material-ui/core/Menu';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
+import Icon from '@material-ui/core/Icon';
+
 import SearchIcon from '@material-ui/icons/Search';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import MoreIcon from '@material-ui/icons/MoreVert';
+import RecentActorsIcon from '@material-ui/icons/RecentActors';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import PersonIcon from '@material-ui/icons/Person';
+
 
 // import "./Navbar.css";
 const styles = theme => ({
@@ -117,7 +119,7 @@ class Navbar extends React.Component {
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-    const renderMenu = (
+    const renderRecentPagesMenu = (
       <Menu
         anchorEl={anchorEl}
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
@@ -125,8 +127,8 @@ class Navbar extends React.Component {
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
-        <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>Alice</MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>Bob</MenuItem>
       </Menu>
     );
 
@@ -140,62 +142,45 @@ class Navbar extends React.Component {
       >
         <MenuItem onClick={this.handleMobileMenuClose}>
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <MailIcon />
-            </Badge>
-          </IconButton>
-          <p>Messages</p>
-        </MenuItem>
-        <MenuItem onClick={this.handleMobileMenuClose}>
-          <IconButton color="inherit">
             <Badge badgeContent={11} color="secondary">
-              <NotificationsIcon />
+              <RecentActorsIcon />
+              <Typography variant="srOnly">Recently-edited pages</Typography>
             </Badge>
           </IconButton>
           <p>Notifications</p>
-        </MenuItem>
-        <MenuItem onClick={this.handleProfileMenuOpen}>
-          <IconButton color="inherit">
-            <AccountCircle />
-          </IconButton>
-          <p>Profile</p>
         </MenuItem>
       </Menu>
     );
 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="fixed">
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
               <MenuIcon />
             </IconButton>
+
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-              Material-UI
+              { this.props.universe !== undefined ? this.props.universe.name : "Notebook.ai" }
             </Typography>
+
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
               <InputBase
-                placeholder="Search…"
+                placeholder="Search {(this.props.universe !== undefined ? 'this universe' : 'your notebook')}..."
                 classes={{
-                  root: classes.inputRoot,
+                  root:  classes.inputRoot,
                   input: classes.inputInput,
                 }}
               />
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton color="inherit">
-                <Badge badgeContent={4} color="secondary">
-                  <MailIcon />
-                </Badge>
-              </IconButton>
-              <IconButton color="inherit">
-                <Badge badgeContent={17} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
+              <IconButton color="inherit" onClick={this.openRecentPagesMenu}>
+                <RecentActorsIcon />
+                <Typography variant="srOnly">Recently-edited pages</Typography>
               </IconButton>
               <IconButton
                 aria-owns={isMenuOpen ? 'material-appbar' : undefined}
@@ -203,17 +188,19 @@ class Navbar extends React.Component {
                 onClick={this.handleProfileMenuOpen}
                 color="inherit"
               >
-                <AccountCircle />
+                <PersonIcon />
+                <Typography variant="srOnly">My profile</Typography>
               </IconButton>
             </div>
             <div className={classes.sectionMobile}>
               <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
-                <MoreIcon />
+                <MoreVertIcon />
+                <Typography variant="srOnly">More...</Typography>
               </IconButton>
             </div>
           </Toolbar>
         </AppBar>
-        {renderMenu}
+        {renderRecentPagesMenu}
         {renderMobileMenu}
       </div>
     );
