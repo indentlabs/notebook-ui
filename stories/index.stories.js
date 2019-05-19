@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { muiTheme } from 'storybook-addon-material-ui';
 
 import Navbar from "../src/components/Navbar";
+import ImageButton from "../src/components/ImageButton";
 import Button from '@material-ui/core/Button';
 
 const universe = {
@@ -34,7 +35,10 @@ storiesOf("Button", module)
       Cool button
     </Button>
   ))
-  .add("disabled", () => <Button disabled="true" variant="contained">Disabled stuff</Button>);
+  .add("disabled", () => <Button disabled="true" variant="contained">Disabled stuff</Button>)
+  .add("rich image buttons", () => (
+    <ImageButton />
+  ));
 
 storiesOf("Navbar", module)
   .addDecorator(muiTheme())
@@ -46,4 +50,10 @@ storiesOf("Navbar", module)
   ))
   .add("filtered to universe", () => (
     <Navbar user={focused_user} />
-  ))
+  ));
+
+  storiesOf("Users", module)
+    .addDecorator(muiTheme())
+    .add("avatar", () => (
+      <Navbar />
+    ))
