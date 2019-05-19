@@ -8,17 +8,14 @@ import Button from '@material-ui/core/Button';
 
 const universe = {
   id: 1,
-  name: "My Super Sweet Universe"
+  name: "My Super Universe"
 };
 
 const user = {
   id: 1,
   name: "Andrew",
 
-  universes: [{
-    id: 1,
-    name: "My Super Great Universe"
-  }],
+  universes: [universe],
   focused_universe: null
 };
 
@@ -26,11 +23,8 @@ const focused_user = {
   id: 2,
   name: "Bob",
 
-  universes: [{
-    id: 1,
-    name: "My Super Great Universe"
-  }],
-  focused_universe: 1
+  universes: [universe],
+  focused_universe: universe
 };
 
 storiesOf("Button", module)
@@ -51,5 +45,5 @@ storiesOf("Navbar", module)
     <Navbar user={user} />
   ))
   .add("filtered to universe", () => (
-    <Navbar user={focused_user} universe={universe} />
+    <Navbar user={focused_user} />
   ))

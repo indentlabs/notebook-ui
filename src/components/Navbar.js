@@ -31,30 +31,8 @@ const styles = theme => ({
 });
 
 class Navbar extends React.Component {
-  state = {
-    anchorEl: null,
-    mobileMoreAnchorEl: null,
-  };
-
-  handleProfileMenuOpen = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleMenuClose = () => {
-    this.setState({ anchorEl: null });
-    this.handleMobileMenuClose();
-  };
-
-  handleMobileMenuOpen = event => {
-    this.setState({ mobileMoreAnchorEl: event.currentTarget });
-  };
-
-  handleMobileMenuClose = () => {
-    this.setState({ mobileMoreAnchorEl: null });
-  };
 
   render() {
-    const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
 
     return (
@@ -62,17 +40,18 @@ class Navbar extends React.Component {
         <AppBar position="fixed">
           <Toolbar>
             <NavbarSidenavToggler {...this.props} />
-
             <NavbarUniversePicker {...this.props} />
 
             <Typography className={classes.title} variant="h5" color="inherit" noWrap>
-              { this.props.universe !== undefined ? this.props.universe.name : "Notebook.ai" }
+              { 
+                this.props.user && this.props.user.focused_universe !== null 
+                ? this.props.user.focused_universe.name
+                : "Notebook.ai" 
+              }
             </Typography>
 
             <NavbarSearch {...this.props} />
-            
             <div className={classes.grow} />
-
             <NavbarIcons {...this.props} />
           </Toolbar>
         </AppBar>

@@ -63,7 +63,11 @@ class NavbarSearch extends React.Component {
           <SearchIcon />
         </div>
         <InputBase
-          placeholder={"Search " + (this.props.universe !== undefined ? 'this universe' : 'your notebook') + "..."}
+          placeholder={"Search " + (
+            this.props.user.focused_universe !== undefined 
+            ? 'this universe' 
+            : 'your notebook'
+          ) + "..."}
           classes={{
             root:  classes.inputRoot,
             input: classes.inputInput,

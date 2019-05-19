@@ -80,6 +80,16 @@ class NavbarUniversePicker extends React.Component {
       return(<span />);
     }
 
+    const universeMenuItems = this.props.user.universes.map((universe) =>
+      <MenuItem onClick={this.focusThisUniverse} universe-id={universe.id}>
+        <Icon color="inherit">
+          <UniverseIcon />
+          <Typography variant="srOnly">{universe.name}</Typography>
+        </Icon>
+        <p>{universe.name}</p>
+      </MenuItem>
+    );
+
     const renderUniverseMenu = (
       <Menu
         anchorEl={anchorEl}
@@ -88,34 +98,7 @@ class NavbarUniversePicker extends React.Component {
         open={isMenuOpen}
         onClose={this.closeUniverseMenu}
       >
-        <MenuItem onClick={this.focusThisUniverse}>
-          <Icon color="inherit">
-            <UniverseIcon />
-            <Typography variant="srOnly">Alice</Typography>
-          </Icon>
-          <p>Universe 1</p>
-        </MenuItem>
-        <MenuItem onClick={this.focusThisUniverse}>
-          <Icon color="inherit">
-            <UniverseIcon />
-            <Typography variant="srOnly">Bob</Typography>
-          </Icon>
-          <p>Universe 2</p>
-        </MenuItem>
-        <MenuItem onClick={this.focusThisUniverse}>
-          <Icon color="inherit">
-            <UniverseIcon />
-            <Typography variant="srOnly">Carol</Typography>
-          </Icon>
-          <p>Universe 3</p>
-        </MenuItem>
-        <MenuItem onClick={this.focusThisUniverse}>
-          <Icon color="inherit">
-            <UniverseIcon />
-            <Typography variant="srOnly">David</Typography>
-          </Icon>
-          <p>Universe 4</p>
-        </MenuItem>
+        {universeMenuItems}
       </Menu>
     );
 
