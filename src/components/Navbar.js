@@ -19,6 +19,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PersonIcon from '@material-ui/icons/Person';
 import CharacterPageIcon from '@material-ui/icons/Group';
 
+import NavbarSearch from './NavbarSearch';
 
 // import "./Navbar.css";
 const styles = theme => ({
@@ -197,18 +198,7 @@ class Navbar extends React.Component {
               { this.props.universe !== undefined ? this.props.universe.name : "Notebook.ai" }
             </Typography>
 
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search {(this.props.universe !== undefined ? 'this universe' : 'your notebook')}..."
-                classes={{
-                  root:  classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-              />
-            </div>
+            <NavbarSearch {...this.props} />
             
             <div className={classes.grow} />
 

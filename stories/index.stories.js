@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { muiTheme } from 'storybook-addon-material-ui';
 
-import Navbar from "../src/features/common/Navbar";
+import Navbar from "../src/components/Navbar";
 import Button from '@material-ui/core/Button';
 
 const universe = {
