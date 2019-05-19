@@ -19,6 +19,17 @@ const user = {
     id: 1,
     name: "My Super Great Universe"
   }],
+  focused_universe: null
+};
+
+const focused_user = {
+  id: 2,
+  name: "Bob",
+
+  universes: [{
+    id: 1,
+    name: "My Super Great Universe"
+  }],
   focused_universe: 1
 };
 
@@ -37,8 +48,8 @@ storiesOf("Navbar", module)
     <Navbar />
   ))
   .add("logged in user", () => (
-    <Navbar user="User object" />
+    <Navbar user={user} />
   ))
   .add("filtered to universe", () => (
-    <Navbar user={user} universe={universe} />
+    <Navbar user={focused_user} universe={universe} />
   ))

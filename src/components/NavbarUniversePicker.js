@@ -65,6 +65,12 @@ class NavbarUniversePicker extends React.Component {
     this.setState({ anchorEl: null });
   };
 
+  focusThisUniverse = event => {
+    this.props.user.focused_universe = 1; // todo get selected id
+
+    this.closeUniverseMenu();
+  };
+
   render() {
     const { classes } = this.props;
     const { anchorEl } = this.state;
@@ -82,28 +88,28 @@ class NavbarUniversePicker extends React.Component {
         open={isMenuOpen}
         onClose={this.closeUniverseMenu}
       >
-        <MenuItem onClick={this.closeUniverseMenu}>
+        <MenuItem onClick={this.focusThisUniverse}>
           <Icon color="inherit">
             <UniverseIcon />
             <Typography variant="srOnly">Alice</Typography>
           </Icon>
           <p>Universe 1</p>
         </MenuItem>
-        <MenuItem onClick={this.closeUniverseMenu}>
+        <MenuItem onClick={this.focusThisUniverse}>
           <Icon color="inherit">
             <UniverseIcon />
             <Typography variant="srOnly">Bob</Typography>
           </Icon>
           <p>Universe 2</p>
         </MenuItem>
-        <MenuItem onClick={this.closeUniverseMenu}>
+        <MenuItem onClick={this.focusThisUniverse}>
           <Icon color="inherit">
             <UniverseIcon />
             <Typography variant="srOnly">Carol</Typography>
           </Icon>
           <p>Universe 3</p>
         </MenuItem>
-        <MenuItem onClick={this.closeUniverseMenu}>
+        <MenuItem onClick={this.focusThisUniverse}>
           <Icon color="inherit">
             <UniverseIcon />
             <Typography variant="srOnly">David</Typography>
@@ -116,7 +122,7 @@ class NavbarUniversePicker extends React.Component {
     return(
       <div>
         <IconButton className={classes.menuButton} 
-                    color={this.props.user.focused_universe !== undefined ? 'secondary' : 'inherit'} 
+                    color={this.props.user.focused_universe !== null ? 'secondary' : 'inherit'} 
                     aria-label="Change universe"
                     onClick={this.openUniverseMenu}>
           <UniverseIcon />
