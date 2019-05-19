@@ -21,22 +21,6 @@ import CharacterPageIcon from '@material-ui/icons/Group';
 
 
 const styles = theme => ({
-  root: {
-    width: '100%',
-  },
-  grow: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-  title: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
-  },
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -75,19 +59,7 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       width: 200,
     },
-  },
-  sectionDesktop: {
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
-      display: 'flex',
-    },
-  },
-  sectionMobile: {
-    display: 'flex',
-    [theme.breakpoints.up('md')]: {
-      display: 'none',
-    },
-  },
+  }
 });
 
 class NavbarSearch extends React.Component {
