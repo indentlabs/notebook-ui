@@ -1,26 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
-import Icon from '@material-ui/core/Icon';
+import Typography from '@material-ui/core/Typography';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
 
 import UniverseIcon from '@material-ui/icons/Language';
-
-import SearchIcon from '@material-ui/icons/Search';
-import RecentActorsIcon from '@material-ui/icons/RecentActors';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import PersonIcon from '@material-ui/icons/Person';
-import CharacterPageIcon from '@material-ui/icons/Group';
-
+import Icon from '@material-ui/core/Icon';
 
 const styles = theme => ({
   search: {
@@ -65,20 +53,76 @@ const styles = theme => ({
 });
 
 class NavbarUniversePicker extends React.Component {
+  state = {
+    anchorEl: null,
+  };
+
+  openUniverseMenu = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  closeUniverseMenu = () => {
+    this.setState({ anchorEl: null });
+  };
 
   render() {
     const { classes } = this.props;
+    const { anchorEl } = this.state;
+    const isMenuOpen = Boolean(anchorEl);
 
     if (this.props.user === undefined || this.props.user.universes === []) {
       return(<span />);
     }
 
+    const renderUniverseMenu = (
+      <Menu
+        anchorEl={anchorEl}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        open={isMenuOpen}
+        onClose={this.closeUniverseMenu}
+      >
+        <MenuItem onClick={this.closeUniverseMenu}>
+          <Icon color="inherit">
+            <UniverseIcon />
+            <Typography variant="srOnly">Alice</Typography>
+          </Icon>
+          <p>Universe 1</p>
+        </MenuItem>
+        <MenuItem onClick={this.closeUniverseMenu}>
+          <Icon color="inherit">
+            <UniverseIcon />
+            <Typography variant="srOnly">Bob</Typography>
+          </Icon>
+          <p>Universe 2</p>
+        </MenuItem>
+        <MenuItem onClick={this.closeUniverseMenu}>
+          <Icon color="inherit">
+            <UniverseIcon />
+            <Typography variant="srOnly">Carol</Typography>
+          </Icon>
+          <p>Universe 3</p>
+        </MenuItem>
+        <MenuItem onClick={this.closeUniverseMenu}>
+          <Icon color="inherit">
+            <UniverseIcon />
+            <Typography variant="srOnly">David</Typography>
+          </Icon>
+          <p>Universe 4</p>
+        </MenuItem>
+      </Menu>
+    );
+
     return(
-      <IconButton className={classes.menuButton} 
-                  color={this.props.user.focused_universe !== undefined ? 'secondary' : 'inherit'} 
-                  aria-label="Change universe">
-        <UniverseIcon />
-      </IconButton>
+      <div>
+        <IconButton className={classes.menuButton} 
+                    color={this.props.user.focused_universe !== undefined ? 'secondary' : 'inherit'} 
+                    aria-label="Change universe"
+                    onClick={this.openUniverseMenu}>
+          <UniverseIcon />
+        </IconButton>
+        {renderUniverseMenu}
+      </div>
     );
   }
 }
