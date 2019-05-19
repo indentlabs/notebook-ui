@@ -12,6 +12,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import NavbarSearch from './NavbarSearch';
 import NavbarIcons from './NavbarIcons';
 import NavbarUniversePicker from './NavbarUniversePicker';
+import NavbarSidenavToggler from './NavbarSidenavToggler';
 
 // import "./Navbar.css";
 const styles = theme => ({
@@ -64,9 +65,7 @@ class Navbar extends React.Component {
       <div className={classes.root}>
         <AppBar position="fixed">
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
-              <MenuIcon />
-            </IconButton>
+            <NavbarSidenavToggler {...this.props} />
 
             <NavbarUniversePicker {...this.props} />
 
