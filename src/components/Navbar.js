@@ -20,6 +20,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import CharacterPageIcon from '@material-ui/icons/Group';
 
 import NavbarSearch from './NavbarSearch';
+import NavbarIcons from './NavbarIcons';
 
 // import "./Navbar.css";
 const styles = theme => ({
@@ -121,70 +122,7 @@ class Navbar extends React.Component {
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-    const renderRecentPagesMenu = (
-      <Menu
-        anchorEl={anchorEl}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        open={isMenuOpen}
-        onClose={this.handleMenuClose}
-      >
-      
-        <MenuItem onClick={this.handleMenuClose}>
-          <Icon color="inherit">
-            <CharacterPageIcon />
-            <Typography variant="srOnly">Alice</Typography>
-          </Icon>
-          <p>Alice</p>
-        </MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>
-          <Icon color="inherit">
-            <CharacterPageIcon />
-            <Typography variant="srOnly">Bob</Typography>
-          </Icon>
-          <p>Bob</p>
-        </MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>
-          <Icon color="inherit">
-            <CharacterPageIcon />
-            <Typography variant="srOnly">Carol</Typography>
-          </Icon>
-          <p>Carol</p>
-        </MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>
-          <Icon color="inherit">
-            <CharacterPageIcon />
-            <Typography variant="srOnly">David</Typography>
-          </Icon>
-          <p>David</p>
-        </MenuItem>
-      </Menu>
-    );
-
-    const renderMobileMenu = (
-      <Menu
-        anchorEl={mobileMoreAnchorEl}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        open={isMobileMenuOpen}
-        onClose={this.handleMenuClose}
-      >
-        <MenuItem onClick={this.handleMobileMenuClose}>
-          <IconButton color="inherit">
-            <RecentActorsIcon />
-            <Typography variant="srOnly">My recent pages</Typography>
-          </IconButton>
-          <p>My recent pages</p>
-        </MenuItem>
-        <MenuItem onClick={this.handleMobileMenuClose}>
-          <IconButton color="inherit">
-            <PersonIcon />
-            <Typography variant="srOnly">My profile</Typography>
-          </IconButton>
-          <p>My profile</p>
-        </MenuItem>
-      </Menu>
-    );
+    
 
     return (
       <div className={classes.root}>
@@ -202,31 +140,9 @@ class Navbar extends React.Component {
             
             <div className={classes.grow} />
 
-            <div className={classes.sectionDesktop}>
-              <IconButton color="inherit" onClick={this.handleProfileMenuOpen}>
-                <RecentActorsIcon />
-                <Typography variant="srOnly">Recently-edited pages</Typography>
-              </IconButton>
-              <IconButton
-                aria-owns={isMenuOpen ? 'material-appbar' : undefined}
-                aria-haspopup="true"
-                color="inherit"
-              >
-                <PersonIcon />
-                <Typography variant="srOnly">My profile</Typography>
-              </IconButton>
-            </div>
-
-            <div className={classes.sectionMobile}>
-              <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
-                <MoreVertIcon />
-                <Typography variant="srOnly">More...</Typography>
-              </IconButton>
-            </div>
+            <NavbarIcons {...this.props} />
           </Toolbar>
         </AppBar>
-        {renderRecentPagesMenu}
-        {renderMobileMenu}
       </div>
     );
   }
