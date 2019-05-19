@@ -13,7 +13,13 @@ const universe = {
 
 const user = {
   id: 1,
-  name: "Andrew"
+  name: "Andrew",
+
+  universes: [{
+    id: 1,
+    name: "My Super Great Universe"
+  }],
+  focused_universe: 1
 };
 
 storiesOf("Button", module)

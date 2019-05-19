@@ -6,10 +6,12 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
+
 import MenuIcon from '@material-ui/icons/Menu';
 
 import NavbarSearch from './NavbarSearch';
 import NavbarIcons from './NavbarIcons';
+import NavbarUniversePicker from './NavbarUniversePicker';
 
 // import "./Navbar.css";
 const styles = theme => ({
@@ -65,6 +67,8 @@ class Navbar extends React.Component {
             <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
               <MenuIcon />
             </IconButton>
+
+            <NavbarUniversePicker {...this.props} />
 
             <Typography className={classes.title} variant="h5" color="inherit" noWrap>
               { this.props.universe !== undefined ? this.props.universe.name : "Notebook.ai" }
