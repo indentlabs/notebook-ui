@@ -5,11 +5,17 @@ import { muiTheme } from 'storybook-addon-material-ui';
 
 import Navbar from "../src/components/Navbar";
 import ImageButton from "../src/components/ImageButton";
+import PageLinkChip from "../src/components/PageLinkChip";
 import Button from '@material-ui/core/Button';
 
 const universe = {
   id: 1,
   name: "My Super Universe"
+};
+
+const character = {
+  id: 1,
+  name: "Alice Quinn"
 };
 
 const user = {
@@ -40,7 +46,7 @@ storiesOf("Button", module)
     <ImageButton />
   ));
 
-storiesOf("Navbar", module)
+  storiesOf("Navbar", module)
   .addDecorator(muiTheme())
   .add("logged out user", () => (
     <Navbar />
@@ -52,8 +58,8 @@ storiesOf("Navbar", module)
     <Navbar user={focused_user} />
   ));
 
-  storiesOf("Users", module)
-    .addDecorator(muiTheme())
-    .add("avatar", () => (
-      <Navbar />
-    ))
+storiesOf("Pages", module)
+  .addDecorator(muiTheme())
+  .add("page link chip", () => (
+    <PageLinkChip page={character} />
+  ));

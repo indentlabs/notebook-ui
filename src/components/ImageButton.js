@@ -77,6 +77,8 @@ const styles = theme => ({
   },
 });
 
+// todo icons and colors?
+// todo enabled/disabled indicator
 const images = [
   {
     url: 'https://www.notebook.ai/assets/card-headers/buildings-9e01f612236e1caad0ecce654da4848596723d0479726bfeb621b9bf156ba2d6.jpg',
