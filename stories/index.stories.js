@@ -8,6 +8,7 @@ import ImageButton from "../src/components/ImageButton";
 import PageLinkChip from "../src/components/PageLinkChip";
 import TagList from "../src/components/TagList";
 import Button from '@material-ui/core/Button';
+import PageContentExpander from '../src/components/PageContentExpander';
 
 const universe = {
   id: 1,
@@ -16,7 +17,25 @@ const universe = {
 
 const character = {
   id: 1,
-  name: "Alice Quinn"
+  name: "Alice Quinn",
+
+  categories: {
+    'General': {
+      icon: '{someIcon}',
+      fields: {
+        'Role': 'Protagonist',
+        'Gender': 'Female',
+        'Age': 23
+      }
+    },
+    'Appearance': {
+      icon: '{someIcon}',
+      fields: {
+        'Hair color': 'red',
+        'Hair length': 'long'
+      }
+    }
+  }
 };
 
 const user = {
@@ -85,6 +104,9 @@ storiesOf("Button", module)
 
   storiesOf("Pages", module)
   .addDecorator(muiTheme())
+  .add("page content expander", () => (
+    <PageContentExpander page={character} />
+  ))
   .add("page link chip", () => (
     <div>
       <PageLinkChip page={character} />
