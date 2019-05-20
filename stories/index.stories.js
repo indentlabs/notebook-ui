@@ -9,6 +9,7 @@ import PageLinkChip from "../src/components/PageLinkChip";
 import TagList from "../src/components/TagList";
 import Button from '@material-ui/core/Button';
 import PageContentExpander from '../src/components/PageContentExpander';
+import PrivacySwitch from '../src/components/PrivacySwitch';
 
 const universe = {
   id: 1,
@@ -18,6 +19,7 @@ const universe = {
 const character = {
   id: 1,
   name: "Alice Quinn",
+  private: true,
 
   categories: {
     'General': {
@@ -102,7 +104,7 @@ storiesOf("Button", module)
     <Navbar user={focused_user} />
   ));
 
-  storiesOf("Pages", module)
+storiesOf("Pages", module)
   .addDecorator(muiTheme())
   .add("page content expander", () => (
     <PageContentExpander page={character} />
@@ -113,6 +115,12 @@ storiesOf("Button", module)
       <PageLinkChip page={character} editable={true} />
     </div>
   ));
+
+storiesOf("Switches", module)
+  .addDecorator(muiTheme())
+  .add("privacy switch", () => (
+    <PrivacySwitch page={character} />
+  ))
 
 storiesOf("Tags", module)
   .addDecorator(muiTheme())
