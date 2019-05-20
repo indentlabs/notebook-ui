@@ -30,14 +30,24 @@ const styles = theme => ({
     height: 20,
     width: 20,
   },
+  question: {
+    flexBasis: '33.33%',
+    textAlign: 'right',
+    marginRight: '10px',
+    color: theme.palette.text.secondary
+  },
+  answer: {
+    paddingTop: '3px'
+  },
+  fields_container: {
+    flexDirection: 'row',
+    display: 'flex'
+  },
   details: {
     flexDirection: 'column'
   },
   column: {
     flexBasis: '33.33%',
-  },
-  answer: {
-    flexBasis: '100%'
   },
   helper: {
     borderLeft: `2px solid ${theme.palette.divider}`,
@@ -81,12 +91,13 @@ class PageContentExpander extends React.Component {
               <ExpansionPanelDetails className={classes.details}>
                 {Object.keys(category.fields).map(function (field_key) {
                   return (
-                    <div className={classes.answer}>
-                      <Typography>
-                        <strong>{field_key}</strong>:&nbsp;
+                    <div className={classes.fields_container}>
+                      <Typography variant="overline" className={classes.question}>
+                        <strong>{field_key}</strong>
+                      </Typography>
+                      <Typography variant="body1" className={classes.answer} gutterBottom>
                         {category.fields[field_key]}
                       </Typography>
-                      <Divider />
                     </div>
                   )
                 })}
