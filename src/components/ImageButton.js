@@ -79,6 +79,7 @@ const styles = theme => ({
 
 // todo icons and colors?
 // todo enabled/disabled indicator
+// todo these uh need to be props
 const images = [
   {
     url: 'https://www.notebook.ai/assets/card-headers/buildings-9e01f612236e1caad0ecce654da4848596723d0479726bfeb621b9bf156ba2d6.jpg',
@@ -93,6 +94,21 @@ const images = [
   {
     url: 'https://www.notebook.ai/assets/card-headers/conditions-bf0c60f0ebbabe3dc6ff4fbc4272d79ac6c539c50c804f726a8040de9dd12f33.jpg',
     title: 'Conditions',
+    width: '33%',
+  },
+  {
+    url: 'https://s3.amazonaws.com/notebook-content-uploads/content/uploads/large/05eae659-9c34-4889-a67e-3b77e9f00c4e.png?1488984334',
+    title: 'Locations',
+    width: '33%',
+  },
+  {
+    url: 'https://www.notebook.ai/assets/card-headers/items-11da46efc32f7c5df5fe52fb4c38e5da7608f63791d1e230f817691484fa3a93.jpg',
+    title: 'Items',
+    width: '33%',
+  },
+  {
+    url: 'https://www.notebook.ai/assets/card-headers/countries-aa8677c142390c629d8eeac2c8b7564e94190dff813cf6415c925882e36f88fd.jpg',
+    title: 'Countries',
     width: '33%',
   },
 ];

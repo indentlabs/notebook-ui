@@ -26,19 +26,34 @@ class PageLinkChip extends React.Component {
   render() {
     const { classes } = this.props;
 
-    return (
-      <div className={classes.root}>
-        <Chip
-          icon={<FaceIcon />}
-          label={this.props.page.name}
-          onClick={handleClick}
-          onDelete={handleDelete}
-          color="primary"
-          variant="outlined"
-          className={classes.chip}
-        />
-      </div>
-    );
+    if (!!this.props.editable) {
+      return (
+        <div className={classes.root}>
+          <Chip
+            icon={<FaceIcon />}
+            label={this.props.page.name}
+            onClick={handleClick}
+            onDelete={handleDelete}
+            color="primary"
+            variant="outlined"
+            className={classes.chip}
+          />
+        </div>
+      );
+    } else {
+      return (
+        <div className={classes.root}>
+          <Chip
+            icon={<FaceIcon />}
+            label={this.props.page.name}
+            onClick={handleClick}
+            color="primary"
+            variant="outlined"
+            className={classes.chip}
+          />
+        </div>
+      );
+    }
   }
 }
 

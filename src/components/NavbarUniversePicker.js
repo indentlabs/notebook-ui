@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import Divider from '@material-ui/core/Divider';
 
 import UniverseIcon from '@material-ui/icons/Language';
 import Icon from '@material-ui/core/Icon';
@@ -89,6 +90,20 @@ class NavbarUniversePicker extends React.Component {
         <p>{universe.name}</p>
       </MenuItem>
     );
+    universeMenuItems.push(
+      <li>
+        <Divider variant="inset" />
+      </li>
+    );
+    universeMenuItems.push(
+      <MenuItem onClick={this.focusThisUniverse} universe-id="all">
+        <Icon color="inherit">
+          <UniverseIcon />
+          <Typography variant="srOnly">All universes</Typography>
+        </Icon>
+        <p>All universes</p>
+      </MenuItem>
+    )
 
     const renderUniverseMenu = (
       <Menu

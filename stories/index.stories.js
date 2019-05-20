@@ -6,6 +6,7 @@ import { muiTheme } from 'storybook-addon-material-ui';
 import Navbar from "../src/components/Navbar";
 import ImageButton from "../src/components/ImageButton";
 import PageLinkChip from "../src/components/PageLinkChip";
+import TagList from "../src/components/TagList";
 import Button from '@material-ui/core/Button';
 
 const universe = {
@@ -36,12 +37,36 @@ const focused_user = {
 
 storiesOf("Button", module)
   .addDecorator(muiTheme())
-  .add("primary button", () => (
-    <Button color="primary" variant="contained">
-      Cool button
-    </Button>
+  .add("normal styles", () => (
+    <div>
+      <Button color="primary" variant="contained">
+        button
+      </Button>
+      <br /><br />
+      <Button color="secondary" variant="contained">
+        button
+      </Button>
+      <br /><br />
+      <Button color="accent" variant="contained">
+        button
+      </Button>
+      <br /><br />
+      <Button color="primary" variant="outlined">
+        button
+      </Button>
+      <br /><br />
+      <Button color="secondary" variant="outlined">
+        button
+      </Button>
+      <br /><br />
+      <Button color="accent" variant="outlined">
+        button
+      </Button>
+      <br /><br />
+      
+      <Button disabled="true" variant="contained">Button</Button>
+    </div>
   ))
-  .add("disabled", () => <Button disabled="true" variant="contained">Disabled stuff</Button>)
   .add("rich image buttons", () => (
     <ImageButton />
   ));
@@ -58,8 +83,21 @@ storiesOf("Button", module)
     <Navbar user={focused_user} />
   ));
 
-storiesOf("Pages", module)
+  storiesOf("Pages", module)
   .addDecorator(muiTheme())
   .add("page link chip", () => (
-    <PageLinkChip page={character} />
+    <div>
+      <PageLinkChip page={character} />
+      <PageLinkChip page={character} editable={true} />
+    </div>
+  ));
+
+storiesOf("Tags", module)
+  .addDecorator(muiTheme())
+  .add("tag list display", () => (
+    <div>
+      <TagList />
+      <br />
+      <TagList editable={true} />
+    </div>
   ));
