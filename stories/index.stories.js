@@ -10,6 +10,7 @@ import TagList from "../src/components/TagList";
 import Button from '@material-ui/core/Button';
 import PageContentExpander from '../src/components/PageContentExpander';
 import PrivacySwitch from '../src/components/PrivacySwitch';
+import PageCountLimitBar from '../src/components/PageCountLimitBar';
 
 import WordDefinitionCard from "../src/components/WordDefinitionCard";
 import PageCard from "../src/components/PageCard";
@@ -134,6 +135,9 @@ storiesOf("Pages", module)
       <PageLinkChip page={character} />
       <PageLinkChip page={character} editable={true} />
     </div>
+  ))
+  .add("page count limit bar", () => (
+    <PageCountLimitBar pageType={"Buildings"} created={3} limit={5} />
   ));
 
 storiesOf("Switches", module)
