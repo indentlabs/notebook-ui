@@ -1,27 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import classNames from 'classnames';
-
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-
-import NavbarSearch from './NavbarSearch';
-import NavbarIcons from './NavbarIcons';
-import NavbarUniversePicker from './NavbarUniversePicker';
 
 const drawerWidth = 240;
 
@@ -87,17 +83,17 @@ const styles = theme => ({
   },
 });
 
-class Navbar extends React.Component {
+class MiniDrawer extends React.Component {
   state = {
-    sidenavOpen: false,
+    open: false,
   };
 
   handleDrawerOpen = () => {
-    this.setState({ sidenavOpen: true });
+    this.setState({ open: true });
   };
 
   handleDrawerClose = () => {
-    this.setState({ sidenavOpen: false });
+    this.setState({ open: false });
   };
 
   render() {
@@ -105,55 +101,23 @@ class Navbar extends React.Component {
 
     return (
       <div className={classes.root}>
-        <CssBaseline />
-        <AppBar position="fixed" 
-                className={classNames(classes.appBar, {
-                  [classes.appBarShift]: this.state.sidenavOpen,
-                })}
-        >
-          <Toolbar disableGutters={!this.state.sidenavOpen}>
-            <IconButton
-                color="inherit"
-                aria-label="Open drawer"
-                onClick={this.handleDrawerOpen}
-                className={classNames(classes.menuButton, {
-                  [classes.hide]: this.state.sidenavOpen,
-                })}
-              >
-              <MenuIcon />
-            </IconButton>
-            <NavbarUniversePicker {...this.props} />
-
-            <Typography className={classes.title} variant="h5" color="inherit" noWrap>
-              { 
-                this.props.user && this.props.user.focused_universe !== null 
-                ? this.props.user.focused_universe.name
-                : "Notebook.ai" 
-              }
-            </Typography>
-
-            <NavbarSearch {...this.props} />
-            <div className={classes.grow} />
-            <NavbarIcons {...this.props} />
-          </Toolbar>
-        </AppBar>
         <Drawer
           variant="permanent"
           className={classNames(classes.drawer, {
-            [classes.drawerOpen]: this.state.sidenavOpen,
-            [classes.drawerClose]: !this.state.sidenavOpen,
+            [classes.drawerOpen]: this.state.open,
+            [classes.drawerClose]: !this.state.open,
           })}
           classes={{
             paper: classNames({
-              [classes.drawerOpen]: this.state.sidenavOpen,
-              [classes.drawerClose]: !this.state.sidenavOpen,
+              [classes.drawerOpen]: this.state.open,
+              [classes.drawerClose]: !this.state.open,
             }),
           }}
-          open={this.state.sidenavOpen}
+          open={this.state.open}
         >
           <div className={classes.toolbar}>
             <IconButton onClick={this.handleDrawerClose}>
-              <ChevronLeftIcon />
+              {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
             </IconButton>
           </div>
           <Divider />
@@ -175,13 +139,41 @@ class Navbar extends React.Component {
             ))}
           </List>
         </Drawer>
+        <main className={classes.content}>
+          <div className={classes.toolbar} />
+          <Typography paragraph>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent
+            elementum facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in
+            hendrerit gravida rutrum quisque non tellus. Convallis convallis tellus id interdum
+            velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing.
+            Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod quis
+            viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo.
+            Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus
+            at augue. At augue eget arcu dictum varius duis at consectetur lorem. Velit sed
+            ullamcorper morbi tincidunt. Lorem donec massa sapien faucibus et molestie ac.
+          </Typography>
+          <Typography paragraph>
+            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
+            facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
+            tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat
+            consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus
+            sed vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in.
+            In hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
+            et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique
+            sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo
+            viverra maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
+            ultrices sagittis orci a.
+          </Typography>
+        </main>
       </div>
     );
   }
 }
 
-Navbar.propTypes = {
+MiniDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Navbar);
+export default withStyles(styles, { withTheme: true })(MiniDrawer);
