@@ -270,6 +270,11 @@ class Navbar extends React.Component {
               <ListItem button onClick={this.toggleWorldbuilding}>
                 <ListItemIcon>
                     <WorldbuildingCategoryIcon />
+                    {
+                      this.state.worldbuildingOpen 
+                      ? <ExpandLess className={classNames({[classes.hide]: !!this.state.sidenavOpen})} /> 
+                      : <ExpandMore className={classNames({[classes.hide]: !!this.state.sidenavOpen})} />
+                    }
                 </ListItemIcon>
                 <ListItemText inset primary="Worldbuilding" />
                 {this.state.worldbuildingOpen ? <ExpandLess /> : <ExpandMore />}
@@ -324,6 +329,11 @@ class Navbar extends React.Component {
             <ListItem button onClick={this.toggleWriting}>
               <ListItemIcon>
                 <WritingCategoryIcon />
+                {
+                  this.state.writingOpen 
+                  ? <ExpandLess className={classNames({[classes.hide]: !!this.state.sidenavOpen})} /> 
+                  : <ExpandMore className={classNames({[classes.hide]: !!this.state.sidenavOpen})} />
+                }
               </ListItemIcon>
               <ListItemText inset primary="Writing" />
               {this.state.writingOpen ? <ExpandLess /> : <ExpandMore />}
@@ -357,6 +367,11 @@ class Navbar extends React.Component {
             <ListItem button onClick={this.toggleMyAccount}>
               <ListItemIcon>
                 <MyAccountCategoryIcon />
+                {
+                  this.state.myAccountOpen 
+                  ? <ExpandLess className={classNames({[classes.hide]: !!this.state.sidenavOpen})} /> 
+                  : <ExpandMore className={classNames({[classes.hide]: !!this.state.sidenavOpen})} />
+                }
               </ListItemIcon>
               <ListItemText inset primary="My Account" />
               {this.state.myAccountOpen ? <ExpandLess /> : <ExpandMore />}
@@ -407,6 +422,11 @@ class Navbar extends React.Component {
             <ListItem button onClick={this.toggleHelp}>
               <ListItemIcon>
                 <HelpCategoryIcon />
+                {
+                  this.state.helpOpen 
+                  ? <ExpandLess className={classNames({[classes.hide]: !!this.state.sidenavOpen})} /> 
+                  : <ExpandMore className={classNames({[classes.hide]: !!this.state.sidenavOpen})} />
+                }
               </ListItemIcon>
               <ListItemText inset primary="Help" />
               {this.state.helpOpen ? <ExpandLess /> : <ExpandMore />}
