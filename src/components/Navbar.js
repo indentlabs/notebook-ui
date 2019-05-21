@@ -44,12 +44,15 @@ const styles = theme => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
-  menuButton: {
+  sidenavToggler: {
     marginLeft: 12,
     marginRight: 36,
   },
   hide: {
     display: 'none',
+  },
+  grow: {
+    flexGrow: 1
   },
   drawer: {
     width: drawerWidth,
@@ -116,7 +119,7 @@ class Navbar extends React.Component {
                 color="inherit"
                 aria-label="Open drawer"
                 onClick={this.handleDrawerOpen}
-                className={classNames(classes.menuButton, {
+                className={classNames(classes.sidenavToggler, {
                   [classes.hide]: this.state.sidenavOpen,
                 })}
               >
