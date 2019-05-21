@@ -7,7 +7,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 const styles = {
   root: {
     flexGrow: 1,
-    minHeight: 20
+    paddingBottom: 20
   },
 };
 

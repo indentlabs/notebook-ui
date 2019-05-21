@@ -248,6 +248,7 @@ class Navbar extends React.Component {
           className={classNames(classes.drawer, {
             [classes.drawerOpen]: this.state.sidenavOpen,
             [classes.drawerClose]: !this.state.sidenavOpen,
+            [classes.hide]: !this.props.user,
           })}
           classes={{
             paper: classNames({
