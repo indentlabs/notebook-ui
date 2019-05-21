@@ -70,6 +70,8 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import StarBorder from '@material-ui/icons/StarBorder';
 
+import Tooltip from '@material-ui/core/Tooltip';
+
 import NavbarSearch from './NavbarSearch';
 import NavbarIcons from './NavbarIcons';
 import NavbarUniversePicker from './NavbarUniversePicker';
@@ -264,45 +266,57 @@ class Navbar extends React.Component {
             </IconButton>
           </div>
           <List>
-            <ListItem button onClick={this.toggleWorldbuilding}>
-              <ListItemIcon>
-                <WorldbuildingCategoryIcon />
-              </ListItemIcon>
-              <ListItemText inset primary="Worldbuilding" />
-              {this.state.worldbuildingOpen ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
+            <Tooltip title="Worldbuilding..." placement="right">
+              <ListItem button onClick={this.toggleWorldbuilding}>
+                <ListItemIcon>
+                    <WorldbuildingCategoryIcon />
+                </ListItemIcon>
+                <ListItemText inset primary="Worldbuilding" />
+                {this.state.worldbuildingOpen ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+            </Tooltip>
             <Collapse in={this.state.worldbuildingOpen} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <UniversePageIcon />
-                  </ListItemIcon>
-                  <ListItemText inset primary="Universes" />
-                </ListItem>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <CharacterPageIcon />
-                  </ListItemIcon>
-                  <ListItemText inset primary="Characters" />
-                </ListItem>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <LocationPageIcon />
-                  </ListItemIcon>
-                  <ListItemText inset primary="Locations" />
-                </ListItem>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <ItemPageIcon />
-                  </ListItemIcon>
-                  <ListItemText inset primary="Items" />
-                </ListItem>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <CustomizePagesIcon />
-                  </ListItemIcon>
-                  <ListItemText inset primary="Add more..." />
-                </ListItem>
+                <Tooltip title="Universes" placement="right">
+                  <ListItem button className={classes.nested}>
+                    <ListItemIcon>
+                      <UniversePageIcon />
+                    </ListItemIcon>
+                    <ListItemText inset primary="Universes" />
+                  </ListItem>
+                </Tooltip>
+                <Tooltip title="Characters" placement="right">
+                  <ListItem button className={classes.nested}>
+                    <ListItemIcon>
+                      <CharacterPageIcon />
+                    </ListItemIcon>
+                    <ListItemText inset primary="Characters" />
+                  </ListItem>
+                </Tooltip>
+                <Tooltip title="Locations" placement="right">
+                  <ListItem button className={classes.nested}>
+                    <ListItemIcon>
+                      <LocationPageIcon />
+                    </ListItemIcon>
+                    <ListItemText inset primary="Locations" />
+                  </ListItem>
+                </Tooltip>
+                <Tooltip title="Items" placement="right">
+                  <ListItem button className={classes.nested}>
+                    <ListItemIcon>
+                      <ItemPageIcon />
+                    </ListItemIcon>
+                    <ListItemText inset primary="Items" />
+                  </ListItem>
+                </Tooltip>
+                <Tooltip title="Add more..." placement="right">
+                  <ListItem button className={classes.nested}>
+                    <ListItemIcon>
+                      <CustomizePagesIcon />
+                    </ListItemIcon>
+                    <ListItemText inset primary="Add more..." />
+                  </ListItem>
+                </Tooltip>
               </List>
             </Collapse>
           </List>
