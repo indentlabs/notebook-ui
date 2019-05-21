@@ -7,10 +7,12 @@ import Navbar from "../src/components/Navbar";
 import ImageButton from "../src/components/ImageButton";
 import PageLinkChip from "../src/components/PageLinkChip";
 import TagList from "../src/components/TagList";
-import WordDefinitionCard from "../src/components/WordDefinitionCard";
 import Button from '@material-ui/core/Button';
 import PageContentExpander from '../src/components/PageContentExpander';
 import PrivacySwitch from '../src/components/PrivacySwitch';
+
+import WordDefinitionCard from "../src/components/WordDefinitionCard";
+import PageCard from "../src/components/PageCard";
 
 const universe = {
   id: 1,
@@ -26,6 +28,7 @@ const character = {
   id: 1,
   name: "Alice Quinn",
   private: true,
+  universe: universe,
 
   categories: {
     'General': {
@@ -43,7 +46,9 @@ const character = {
         'Hair length': 'long'
       }
     }
-  }
+  },
+
+  description: "Some descriptive text here maybe? Role?"
 };
 
 const user = {
@@ -102,6 +107,9 @@ storiesOf("Cards", module)
   .addDecorator(muiTheme())
   .add("word definition", () => (
     <WordDefinitionCard word={"to be used lol"} />
+  ))
+  .add("page", () => (
+    <PageCard page={character} />
   ));
 
 storiesOf("Navbar", module)
