@@ -13,15 +13,57 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import CharacterPageIcon from '@material-ui/icons/Group';
 import RecentActorsIcon from '@material-ui/icons/RecentActors';
 import Collapse from '@material-ui/core/Collapse';
+
+import WorldbuildingCategoryIcon from '@material-ui/icons/Book';
+import UniversePageIcon from '@material-ui/icons/Language';
+import CharacterPageIcon from '@material-ui/icons/Group';
+import LocationPageIcon from '@material-ui/icons/Terrain';
+import ItemPageIcon from '@material-ui/icons/BeachAccess';
+import BuildingPageIcon from '@material-ui/icons/Business';
+import ConditionPageIcon from '@material-ui/icons/BubbleChart';
+import CountryPageIcon from '@material-ui/icons/Explore';
+import CreaturePageIcon from '@material-ui/icons/Pets';
+import DeityPageIcon from '@material-ui/icons/AcUnit';
+import FloraPageIcon from '@material-ui/icons/LocalFlorist';
+import GovernmentPageIcon from '@material-ui/icons/AccountBalance';
+import GroupPageIcon from '@material-ui/icons/Wc';
+import JobPageIcon from '@material-ui/icons/Work';
+import LandmarkPageIcon from '@material-ui/icons/LocationOn';
+import LanguagePageIcon from '@material-ui/icons/Forum';
+import MagicPageIcon from '@material-ui/icons/FlashOn';
+import PlanetPageIcon from '@material-ui/icons/Public';
+import RacePageIcon from '@material-ui/icons/Face';
+import ReligionPageIcon from '@material-ui/icons/Brightness7';
+import ScenePageIcon from '@material-ui/icons/LocalMovies';
+import TechnologyPageIcon from '@material-ui/icons/Router';
+import TownPageIcon from '@material-ui/icons/LocationCity';
+import TraditionPageIcon from '@material-ui/icons/Today';
+import VehiclePageIcon from '@material-ui/icons/DriveEta';
+import CustomizePagesIcon from '@material-ui/icons/Add';
+
+import WritingCategoryIcon from '@material-ui/icons/Book';
+import DocumentPageIcon from '@material-ui/icons/Description';
+import DiscussionPageIcon from '@material-ui/icons/Forum';
+import PromptPageIcon from '@material-ui/icons/Pets';
+
+import MyAccountCategoryIcon from '@material-ui/icons/Book';
+import ProfilePageIcon from '@material-ui/icons/Description';
+import BillingPageIcon from '@material-ui/icons/Forum';
+import DataExportPageIcon from '@material-ui/icons/Pets';
+import RecycleBinPageIcon from '@material-ui/icons/Description';
+import SettingsPageIcon from '@material-ui/icons/Forum';
+import SignOutPageIcon from '@material-ui/icons/Pets';
+
+import HelpCategoryIcon from '@material-ui/icons/Help';
+import HelpLinkIcon from '@material-ui/icons/ExitToApp';
+import PrivacyPolicyIcon from '@material-ui/icons/VerifiedUser';
 
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
@@ -31,7 +73,7 @@ import NavbarSearch from './NavbarSearch';
 import NavbarIcons from './NavbarIcons';
 import NavbarUniversePicker from './NavbarUniversePicker';
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const styles = theme => ({
   root: {
@@ -223,7 +265,7 @@ class Navbar extends React.Component {
           <List>
             <ListItem button onClick={this.toggleWorldbuilding}>
               <ListItemIcon>
-                <InboxIcon />
+                <WorldbuildingCategoryIcon />
               </ListItemIcon>
               <ListItemText inset primary="Worldbuilding" />
               {this.state.worldbuildingOpen ? <ExpandLess /> : <ExpandMore />}
@@ -232,27 +274,33 @@ class Navbar extends React.Component {
               <List component="div" disablePadding>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <StarBorder />
+                    <UniversePageIcon />
                   </ListItemIcon>
                   <ListItemText inset primary="Universes" />
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <StarBorder />
+                    <CharacterPageIcon />
                   </ListItemIcon>
                   <ListItemText inset primary="Characters" />
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <StarBorder />
+                    <LocationPageIcon />
                   </ListItemIcon>
                   <ListItemText inset primary="Locations" />
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <StarBorder />
+                    <ItemPageIcon />
                   </ListItemIcon>
                   <ListItemText inset primary="Items" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <CustomizePagesIcon />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Add more..." />
                 </ListItem>
               </List>
             </Collapse>
@@ -261,7 +309,7 @@ class Navbar extends React.Component {
           <List>
             <ListItem button onClick={this.toggleWriting}>
               <ListItemIcon>
-                <InboxIcon />
+                <WritingCategoryIcon />
               </ListItemIcon>
               <ListItemText inset primary="Writing" />
               {this.state.writingOpen ? <ExpandLess /> : <ExpandMore />}
@@ -270,27 +318,21 @@ class Navbar extends React.Component {
               <List component="div" disablePadding>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <StarBorder />
+                    <DocumentPageIcon />
                   </ListItemIcon>
-                  <ListItemText inset primary="Universes" />
+                  <ListItemText inset primary="Documents" />
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <StarBorder />
+                    <DiscussionPageIcon />
                   </ListItemIcon>
-                  <ListItemText inset primary="Characters" />
+                  <ListItemText inset primary="Discussions" />
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <StarBorder />
+                    <PromptPageIcon />
                   </ListItemIcon>
-                  <ListItemText inset primary="Locations" />
-                </ListItem>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <StarBorder />
-                  </ListItemIcon>
-                  <ListItemText inset primary="Items" />
+                  <ListItemText inset primary="Prompts" />
                 </ListItem>
               </List>
             </Collapse>
@@ -299,7 +341,7 @@ class Navbar extends React.Component {
           <List>
             <ListItem button onClick={this.toggleMyAccount}>
               <ListItemIcon>
-                <InboxIcon />
+                <MyAccountCategoryIcon />
               </ListItemIcon>
               <ListItemText inset primary="My Account" />
               {this.state.myAccountOpen ? <ExpandLess /> : <ExpandMore />}
@@ -308,27 +350,39 @@ class Navbar extends React.Component {
               <List component="div" disablePadding>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <StarBorder />
+                    <ProfilePageIcon />
                   </ListItemIcon>
-                  <ListItemText inset primary="Universes" />
+                  <ListItemText inset primary="Profile" />
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <StarBorder />
+                    <BillingPageIcon />
                   </ListItemIcon>
-                  <ListItemText inset primary="Characters" />
+                  <ListItemText inset primary="Billing" />
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <StarBorder />
+                    <DataExportPageIcon />
                   </ListItemIcon>
-                  <ListItemText inset primary="Locations" />
+                  <ListItemText inset primary="Data Exports" />
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <StarBorder />
+                    <RecycleBinPageIcon />
                   </ListItemIcon>
-                  <ListItemText inset primary="Items" />
+                  <ListItemText inset primary="Recycle Bin" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <SettingsPageIcon />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Settings" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <SignOutPageIcon />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Sign out" />
                 </ListItem>
               </List>
             </Collapse>
@@ -337,36 +391,36 @@ class Navbar extends React.Component {
           <List>
             <ListItem button onClick={this.toggleHelp}>
               <ListItemIcon>
-                <InboxIcon />
+                <HelpCategoryIcon />
               </ListItemIcon>
-              <ListItemText inset primary="My Account" />
+              <ListItemText inset primary="Help" />
               {this.state.helpOpen ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
             <Collapse in={this.state.helpOpen} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <StarBorder />
+                    <HelpLinkIcon />
                   </ListItemIcon>
-                  <ListItemText inset primary="Universes" />
+                  <ListItemText inset primary="Help 1" />
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <StarBorder />
+                    <HelpLinkIcon />
                   </ListItemIcon>
-                  <ListItemText inset primary="Characters" />
+                  <ListItemText inset primary="Help 2" />
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <StarBorder />
+                    <HelpLinkIcon />
                   </ListItemIcon>
-                  <ListItemText inset primary="Locations" />
+                  <ListItemText inset primary="Help 3" />
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <StarBorder />
+                    <PrivacyPolicyIcon />
                   </ListItemIcon>
-                  <ListItemText inset primary="Items" />
+                  <ListItemText inset primary="Privacy policy" />
                 </ListItem>
               </List>
             </Collapse>
