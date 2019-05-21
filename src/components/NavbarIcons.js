@@ -57,31 +57,6 @@ class NavbarIcons extends React.Component {
       return(<span />)
     }
 
-    const renderMobileMenu = (
-      <Menu
-        anchorEl={mobileMoreAnchorEl}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        open={isMobileMenuOpen}
-        onClose={this.handleMenuClose}
-      >
-        <MenuItem onClick={this.handleMobileMenuClose}>
-          <IconButton color="inherit" onClick={this.props.recentContentListAction(true)}>
-            <RecentActorsIcon />
-            <Typography variant="srOnly">My recent pages</Typography>
-          </IconButton>
-          <p>My recent pages</p>
-        </MenuItem>
-        <MenuItem onClick={this.handleMobileMenuClose}>
-          <IconButton color="inherit">
-            <PersonIcon />
-            <Typography variant="srOnly">My profile</Typography>
-          </IconButton>
-          <p>My profile</p>
-        </MenuItem>
-      </Menu>
-    );
-
     return(
       <div>
         <div className={classes.sectionDesktop}>
@@ -94,13 +69,13 @@ class NavbarIcons extends React.Component {
         </div>
 
         <div className={classes.sectionMobile}>
-          <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
-            <MoreVertIcon />
-            <Typography variant="srOnly">More...</Typography>
+          <IconButton aria-haspopup="true" 
+                      onClick={this.props.recentContentListAction(true)} 
+                      color="inherit">
+            <RecentActorsIcon />
+            <Typography variant="srOnly">My recently-edited pages</Typography>
           </IconButton>
         </div>
-
-        {renderMobileMenu}
       </div>
     );
   }

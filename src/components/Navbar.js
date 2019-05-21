@@ -54,12 +54,12 @@ import DiscussionPageIcon from '@material-ui/icons/Forum';
 import PromptPageIcon from '@material-ui/icons/Pets';
 
 import MyAccountCategoryIcon from '@material-ui/icons/Book';
-import ProfilePageIcon from '@material-ui/icons/Description';
-import BillingPageIcon from '@material-ui/icons/Forum';
-import DataExportPageIcon from '@material-ui/icons/Pets';
-import RecycleBinPageIcon from '@material-ui/icons/Description';
-import SettingsPageIcon from '@material-ui/icons/Forum';
-import SignOutPageIcon from '@material-ui/icons/Pets';
+import ProfilePageIcon from '@material-ui/icons/Person';
+import BillingPageIcon from '@material-ui/icons/CreditCard';
+import DataExportPageIcon from '@material-ui/icons/CloudDownload';
+import RecycleBinPageIcon from '@material-ui/icons/Delete';
+import SettingsPageIcon from '@material-ui/icons/Settings';
+import SignOutPageIcon from '@material-ui/icons/PowerSettingsNew';
 
 import HelpCategoryIcon from '@material-ui/icons/Help';
 import HelpLinkIcon from '@material-ui/icons/ExitToApp';
@@ -261,7 +261,6 @@ class Navbar extends React.Component {
               <ChevronLeftIcon />
             </IconButton>
           </div>
-          <Divider />
           <List>
             <ListItem button onClick={this.toggleWorldbuilding}>
               <ListItemIcon>
@@ -305,7 +304,6 @@ class Navbar extends React.Component {
               </List>
             </Collapse>
           </List>
-          <Divider />
           <List>
             <ListItem button onClick={this.toggleWriting}>
               <ListItemIcon>
@@ -337,7 +335,6 @@ class Navbar extends React.Component {
               </List>
             </Collapse>
           </List>
-          <Divider />
           <List>
             <ListItem button onClick={this.toggleMyAccount}>
               <ListItemIcon>
@@ -364,13 +361,13 @@ class Navbar extends React.Component {
                   <ListItemIcon>
                     <DataExportPageIcon />
                   </ListItemIcon>
-                  <ListItemText inset primary="Data Exports" />
+                  <ListItemText inset primary="Download your data" />
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <RecycleBinPageIcon />
                   </ListItemIcon>
-                  <ListItemText inset primary="Recycle Bin" />
+                  <ListItemText inset primary="Recycle bin" />
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
