@@ -5,13 +5,10 @@ import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { withStyles } from '@material-ui/core/styles';
-import Icon from '@material-ui/core/Icon';
 
 import RecentActorsIcon from '@material-ui/icons/RecentActors';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PersonIcon from '@material-ui/icons/Person';
-import CharacterPageIcon from '@material-ui/icons/Group';
-
 
 const styles = theme => ({
   sectionDesktop: {
@@ -26,16 +23,15 @@ const styles = theme => ({
       display: 'none',
     },
   },
+  menuButton: {
+    marginRight: '10px'
+  }
 });
 
 class NavbarIcons extends React.Component {
   state = {
     anchorEl: null,
     mobileMoreAnchorEl: null,
-  };
-
-  handleProfileMenuOpen = event => {
-    this.setState({ anchorEl: event.currentTarget });
   };
 
   handleMenuClose = () => {
@@ -70,7 +66,7 @@ class NavbarIcons extends React.Component {
         onClose={this.handleMenuClose}
       >
         <MenuItem onClick={this.handleMobileMenuClose}>
-          <IconButton color="inherit">
+          <IconButton color="inherit" onClick={this.props.recentContentListAction(true)}>
             <RecentActorsIcon />
             <Typography variant="srOnly">My recent pages</Typography>
           </IconButton>
@@ -86,60 +82,14 @@ class NavbarIcons extends React.Component {
       </Menu>
     );
 
-    const renderRecentPagesMenu = (
-      <Menu
-        anchorEl={anchorEl}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        open={isMenuOpen}
-        onClose={this.handleMenuClose}
-      >
-      
-        <MenuItem onClick={this.handleMenuClose}>
-          <Icon color="inherit">
-            <CharacterPageIcon />
-            <Typography variant="srOnly">Alice</Typography>
-          </Icon>
-          <p>Alice</p>
-        </MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>
-          <Icon color="inherit">
-            <CharacterPageIcon />
-            <Typography variant="srOnly">Bob</Typography>
-          </Icon>
-          <p>Bob</p>
-        </MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>
-          <Icon color="inherit">
-            <CharacterPageIcon />
-            <Typography variant="srOnly">Carol</Typography>
-          </Icon>
-          <p>Carol</p>
-        </MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>
-          <Icon color="inherit">
-            <CharacterPageIcon />
-            <Typography variant="srOnly">David</Typography>
-          </Icon>
-          <p>David</p>
-        </MenuItem>
-      </Menu>
-    );
-
     return(
       <div>
         <div className={classes.sectionDesktop}>
-          <IconButton color="inherit" onClick={this.handleProfileMenuOpen}>
+          <IconButton color="inherit" 
+                      onClick={this.props.recentContentListAction(true)} 
+                      className={classes.menuButton}>
             <RecentActorsIcon />
             <Typography variant="srOnly">Recently-edited pages</Typography>
-          </IconButton>
-          <IconButton
-            aria-owns={isMenuOpen ? 'material-appbar' : undefined}
-            aria-haspopup="true"
-            color="inherit"
-          >
-            <PersonIcon />
-            <Typography variant="srOnly">My profile</Typography>
           </IconButton>
         </div>
 
@@ -150,7 +100,6 @@ class NavbarIcons extends React.Component {
           </IconButton>
         </div>
 
-        {renderRecentPagesMenu}
         {renderMobileMenu}
       </div>
     );

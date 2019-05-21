@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import classNames from 'classnames';
+import ListSubheader from '@material-ui/core/ListSubheader';
 
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ListItem from '@material-ui/core/ListItem';
@@ -18,6 +19,13 @@ import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import CharacterPageIcon from '@material-ui/icons/Group';
+import RecentActorsIcon from '@material-ui/icons/RecentActors';
+import Collapse from '@material-ui/core/Collapse';
+
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import StarBorder from '@material-ui/icons/StarBorder';
 
 import NavbarSearch from './NavbarSearch';
 import NavbarIcons from './NavbarIcons';
@@ -59,6 +67,9 @@ const styles = theme => ({
     flexShrink: 0,
     whiteSpace: 'nowrap',
   },
+  recentContentListDrawer: {
+    width: 400
+  },
   drawerOpen: {
     width: drawerWidth,
     transition: theme.transitions.create('width', {
@@ -88,11 +99,19 @@ const styles = theme => ({
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
   },
+  nested: {
+    paddingLeft: theme.spacing.unit * 4,
+  },
 });
 
 class Navbar extends React.Component {
   state = {
     sidenavOpen: false,
+    recentContentListOpen: false,
+    worldbuildingOpen: true,
+    writingOpen: false,
+    myAccountOpen: false,
+    helpOpen: false
   };
 
   handleDrawerOpen = () => {
@@ -103,8 +122,49 @@ class Navbar extends React.Component {
     this.setState({ sidenavOpen: false });
   };
 
+  toggleRecentContent = (open) => () => {
+    this.setState({ recentContentListOpen: open });
+  };
+
+  toggleWorldbuilding = () => {
+    this.setState({worldbuildingOpen: !this.state.worldbuildingOpen });
+  };
+
+  toggleWriting = () => {
+    this.setState({writingOpen: !this.state.writingOpen });
+  };
+
+  toggleMyAccount = () => {
+    this.setState({myAccountOpen: !this.state.myAccountOpen });
+  };
+
+  toggleHelp = () => {
+    this.setState({helpOpen: !this.state.helpOpen });
+  };
+
   render() {
     const { classes, theme } = this.props;
+
+    const recentContentList = (
+      <div className={classes.list}>
+        <List>
+          <ListSubheader component="div">Recently edited...</ListSubheader>
+          {['Alice', 'Bob', 'Carol', 'David', 'Ethan', 'Frederick'].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon><CharacterPageIcon /></ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          <ListItem button key="more">
+            <ListItemIcon><RecentActorsIcon /></ListItemIcon>
+            <ListItemText primary="More..." />
+          </ListItem>
+        </List>
+      </div>
+    );
 
     return (
       <div className={classes.root}>
@@ -137,7 +197,7 @@ class Navbar extends React.Component {
 
             <NavbarSearch {...this.props} />
             <div className={classes.grow} />
-            <NavbarIcons {...this.props} />
+            <NavbarIcons {...this.props} recentContentListAction={this.toggleRecentContent} />
           </Toolbar>
         </AppBar>
         <Drawer
@@ -161,22 +221,169 @@ class Navbar extends React.Component {
           </div>
           <Divider />
           <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
+            <ListItem button onClick={this.toggleWorldbuilding}>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText inset primary="Worldbuilding" />
+              {this.state.worldbuildingOpen ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+            <Collapse in={this.state.worldbuildingOpen} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Universes" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Characters" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Locations" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Items" />
+                </ListItem>
+              </List>
+            </Collapse>
           </List>
           <Divider />
           <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
+            <ListItem button onClick={this.toggleWriting}>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText inset primary="Writing" />
+              {this.state.writingOpen ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+            <Collapse in={this.state.writingOpen} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Universes" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Characters" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Locations" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Items" />
+                </ListItem>
+              </List>
+            </Collapse>
           </List>
+          <Divider />
+          <List>
+            <ListItem button onClick={this.toggleMyAccount}>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText inset primary="My Account" />
+              {this.state.myAccountOpen ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+            <Collapse in={this.state.myAccountOpen} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Universes" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Characters" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Locations" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Items" />
+                </ListItem>
+              </List>
+            </Collapse>
+          </List>
+          <Divider />
+          <List>
+            <ListItem button onClick={this.toggleHelp}>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText inset primary="My Account" />
+              {this.state.helpOpen ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+            <Collapse in={this.state.helpOpen} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Universes" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Characters" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Locations" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Items" />
+                </ListItem>
+              </List>
+            </Collapse>
+          </List>
+        </Drawer>
+        <Drawer anchor="right" 
+                open={this.state.recentContentListOpen} 
+                onClose={this.toggleRecentContent(false)}
+                className={classes.recentContentListDrawer}>
+          <div
+            tabIndex={0}
+            role="button"
+            onClick={this.toggleRecentContent(false)}
+            onKeyDown={this.toggleRecentContent(false)}
+          >
+            {recentContentList}
+          </div>
         </Drawer>
       </div>
     );
