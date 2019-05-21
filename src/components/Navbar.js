@@ -20,6 +20,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import RecentActorsIcon from '@material-ui/icons/RecentActors';
 import Collapse from '@material-ui/core/Collapse';
+import Badge from '@material-ui/core/Badge';
 
 import WorldbuildingCategoryIcon from '@material-ui/icons/Book';
 import UniversePageIcon from '@material-ui/icons/Language';
@@ -322,7 +323,9 @@ class Navbar extends React.Component {
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <DiscussionPageIcon />
+                    <Badge className={classes.margin} badgeContent={99} color="primary">
+                      <DiscussionPageIcon />
+                    </Badge>
                   </ListItemIcon>
                   <ListItemText inset primary="Discussions" />
                 </ListItem>

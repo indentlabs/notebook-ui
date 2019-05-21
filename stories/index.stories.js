@@ -7,6 +7,7 @@ import Navbar from "../src/components/Navbar";
 import ImageButton from "../src/components/ImageButton";
 import PageLinkChip from "../src/components/PageLinkChip";
 import TagList from "../src/components/TagList";
+import WordDefinitionCard from "../src/components/WordDefinitionCard";
 import Button from '@material-ui/core/Button';
 import PageContentExpander from '../src/components/PageContentExpander';
 import PrivacySwitch from '../src/components/PrivacySwitch';
@@ -15,6 +16,11 @@ const universe = {
   id: 1,
   name: "My Super Universe"
 };
+
+const universe2 = {
+  id: 2,
+  name: "My Other Universe"
+}
 
 const character = {
   id: 1,
@@ -44,7 +50,7 @@ const user = {
   id: 1,
   name: "Andrew",
 
-  universes: [universe],
+  universes: [universe, universe2],
   focused_universe: null
 };
 
@@ -92,7 +98,13 @@ storiesOf("Button", module)
     <ImageButton />
   ));
 
-  storiesOf("Navbar", module)
+storiesOf("Cards", module)
+  .addDecorator(muiTheme())
+  .add("word definition", () => (
+    <WordDefinitionCard word={"to be used lol"} />
+  ));
+
+storiesOf("Navbar", module)
   .addDecorator(muiTheme())
   .add("logged out user", () => (
     <Navbar />
@@ -122,7 +134,7 @@ storiesOf("Switches", module)
     <PrivacySwitch page={character} />
   ))
 
-storiesOf("Tags", module)
+  storiesOf("Tags", module)
   .addDecorator(muiTheme())
   .add("tag list display", () => (
     <div>
