@@ -326,119 +326,144 @@ class Navbar extends React.Component {
             </Collapse>
           </List>
           <List>
-            <ListItem button onClick={this.toggleWriting}>
-              <ListItemIcon>
-                <WritingCategoryIcon />
-                {
-                  this.state.writingOpen 
-                  ? <ExpandLess className={classNames({[classes.hide]: !!this.state.sidenavOpen})} /> 
-                  : <ExpandMore className={classNames({[classes.hide]: !!this.state.sidenavOpen})} />
-                }
-              </ListItemIcon>
-              <ListItemText inset primary="Writing" />
-              {this.state.writingOpen ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
+            <Tooltip title="Writing..." placement="right">
+              <ListItem button onClick={this.toggleWriting}>
+                <ListItemIcon>
+                  <WritingCategoryIcon />
+                  {
+                    this.state.writingOpen 
+                    ? <ExpandLess className={classNames({[classes.hide]: !!this.state.sidenavOpen})} /> 
+                    : <ExpandMore className={classNames({[classes.hide]: !!this.state.sidenavOpen})} />
+                  }
+                </ListItemIcon>
+                <ListItemText inset primary="Writing" />
+                {this.state.writingOpen ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+            </Tooltip>
             <Collapse in={this.state.writingOpen} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <DocumentPageIcon />
-                  </ListItemIcon>
-                  <ListItemText inset primary="Documents" />
-                </ListItem>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <Badge className={classes.margin} badgeContent={99} color="primary">
-                      <DiscussionPageIcon />
-                    </Badge>
-                  </ListItemIcon>
-                  <ListItemText inset primary="Discussions" />
-                </ListItem>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <PromptPageIcon />
-                  </ListItemIcon>
-                  <ListItemText inset primary="Prompts" />
-                </ListItem>
+                <Tooltip title="Documents" placement="right">
+                  <ListItem button className={classes.nested}>
+                    <ListItemIcon>
+                      <DocumentPageIcon />
+                    </ListItemIcon>
+                    <ListItemText inset primary="Documents" />
+                  </ListItem>
+                </Tooltip>
+                <Tooltip title="Discussions" placement="right">
+                  <ListItem button className={classes.nested}>
+                    <ListItemIcon>
+                      <Badge className={classes.margin} badgeContent={99} color="primary">
+                        <DiscussionPageIcon />
+                      </Badge>
+                    </ListItemIcon>
+                    <ListItemText inset primary="Discussions" />
+                  </ListItem>
+                </Tooltip>
+                <Tooltip title="Prompts" placement="right">
+                  <ListItem button className={classes.nested}>
+                    <ListItemIcon>
+                      <PromptPageIcon />
+                    </ListItemIcon>
+                    <ListItemText inset primary="Prompts" />
+                  </ListItem>
+                </Tooltip>
               </List>
             </Collapse>
           </List>
           <List>
-            <ListItem button onClick={this.toggleMyAccount}>
-              <ListItemIcon>
-                <MyAccountCategoryIcon />
-                {
-                  this.state.myAccountOpen 
-                  ? <ExpandLess className={classNames({[classes.hide]: !!this.state.sidenavOpen})} /> 
-                  : <ExpandMore className={classNames({[classes.hide]: !!this.state.sidenavOpen})} />
-                }
-              </ListItemIcon>
-              <ListItemText inset primary="My Account" />
-              {this.state.myAccountOpen ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
+              <Tooltip title="My account" placement="right">
+              <ListItem button onClick={this.toggleMyAccount}>
+                <ListItemIcon>
+                  <MyAccountCategoryIcon />
+                  {
+                    this.state.myAccountOpen 
+                    ? <ExpandLess className={classNames({[classes.hide]: !!this.state.sidenavOpen})} /> 
+                    : <ExpandMore className={classNames({[classes.hide]: !!this.state.sidenavOpen})} />
+                  }
+                </ListItemIcon>
+                <ListItemText inset primary="My Account" />
+                {this.state.myAccountOpen ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+            </Tooltip>
             <Collapse in={this.state.myAccountOpen} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <ProfilePageIcon />
-                  </ListItemIcon>
-                  <ListItemText inset primary="Profile" />
-                </ListItem>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <BillingPageIcon />
-                  </ListItemIcon>
-                  <ListItemText inset primary="Billing" />
-                </ListItem>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <DataExportPageIcon />
-                  </ListItemIcon>
-                  <ListItemText inset primary="Download your data" />
-                </ListItem>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <RecycleBinPageIcon />
-                  </ListItemIcon>
-                  <ListItemText inset primary="Recycle bin" />
-                </ListItem>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <SettingsPageIcon />
-                  </ListItemIcon>
-                  <ListItemText inset primary="Settings" />
-                </ListItem>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <SignOutPageIcon />
-                  </ListItemIcon>
-                  <ListItemText inset primary="Sign out" />
-                </ListItem>
+                <Tooltip title="Profile" placement="right">
+                  <ListItem button className={classes.nested}>
+                    <ListItemIcon>
+                      <ProfilePageIcon />
+                    </ListItemIcon>
+                    <ListItemText inset primary="Profile" />
+                  </ListItem>
+                </Tooltip>
+                <Tooltip title="Billing" placement="right">
+                  <ListItem button className={classes.nested}>
+                    <ListItemIcon>
+                      <BillingPageIcon />
+                    </ListItemIcon>
+                    <ListItemText inset primary="Billing" />
+                  </ListItem>
+                </Tooltip>
+                <Tooltip title="Download your data" placement="right">
+                  <ListItem button className={classes.nested}>
+                    <ListItemIcon>
+                      <DataExportPageIcon />
+                    </ListItemIcon>
+                    <ListItemText inset primary="Download your data" />
+                  </ListItem>
+                </Tooltip>
+                <Tooltip title="Recycle bin" placement="right">
+                  <ListItem button className={classes.nested}>
+                    <ListItemIcon>
+                      <RecycleBinPageIcon />
+                    </ListItemIcon>
+                    <ListItemText inset primary="Recycle bin" />
+                  </ListItem>
+                </Tooltip>
+                <Tooltip title="Settings" placement="right">
+                  <ListItem button className={classes.nested}>
+                    <ListItemIcon>
+                      <SettingsPageIcon />
+                    </ListItemIcon>
+                    <ListItemText inset primary="Settings" />
+                  </ListItem>
+                </Tooltip>
+                <Tooltip title="Sign out" placement="right">
+                  <ListItem button className={classes.nested}>
+                    <ListItemIcon>
+                      <SignOutPageIcon />
+                    </ListItemIcon>
+                    <ListItemText inset primary="Sign out" />
+                  </ListItem>
+                </Tooltip>
               </List>
             </Collapse>
           </List>
-          <Divider />
           <List>
-            <ListItem button onClick={this.toggleHelp}>
-              <ListItemIcon>
-                <HelpCategoryIcon />
-                {
-                  this.state.helpOpen 
-                  ? <ExpandLess className={classNames({[classes.hide]: !!this.state.sidenavOpen})} /> 
-                  : <ExpandMore className={classNames({[classes.hide]: !!this.state.sidenavOpen})} />
-                }
-              </ListItemIcon>
-              <ListItemText inset primary="Help" />
-              {this.state.helpOpen ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
+            <Tooltip title="Help" placement="right">
+              <ListItem button onClick={this.toggleHelp}>
+                <ListItemIcon>
+                  <HelpCategoryIcon />
+                  {
+                    this.state.helpOpen 
+                    ? <ExpandLess className={classNames({[classes.hide]: !!this.state.sidenavOpen})} /> 
+                    : <ExpandMore className={classNames({[classes.hide]: !!this.state.sidenavOpen})} />
+                  }
+                </ListItemIcon>
+                <ListItemText inset primary="Help" />
+                {this.state.helpOpen ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+            </Tooltip>
             <Collapse in={this.state.helpOpen} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <HelpLinkIcon />
-                  </ListItemIcon>
-                  <ListItemText inset primary="Help 1" />
-                </ListItem>
+                <Tooltip title="Help 1" placement="right">
+                  <ListItem button className={classes.nested}>
+                    <ListItemIcon>
+                      <HelpLinkIcon />
+                    </ListItemIcon>
+                    <ListItemText inset primary="Help 1" />
+                  </ListItem>
+                </Tooltip>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <HelpLinkIcon />

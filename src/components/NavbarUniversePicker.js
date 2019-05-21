@@ -8,8 +8,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Divider from '@material-ui/core/Divider';
 
+import classNames from 'classnames';
+
 import UniverseIcon from '@material-ui/icons/Language';
 import Icon from '@material-ui/core/Icon';
+
+import Tooltip from '@material-ui/core/Tooltip';
 
 const styles = theme => ({
   search: {
@@ -119,12 +123,14 @@ class NavbarUniversePicker extends React.Component {
 
     return(
       <div>
-        <IconButton className={classes.menuButton} 
-                    color={this.props.user.focused_universe !== null ? 'secondary' : 'inherit'} 
-                    aria-label="Change universe"
-                    onClick={this.openUniverseMenu}>
-          <UniverseIcon />
-        </IconButton>
+        <Tooltip title="Focus on a specific universe..." placement="bottom">
+          <IconButton className={classes.menuButton} 
+                      color={this.props.user.focused_universe !== null ? 'secondary' : 'inherit'} 
+                      aria-label="Change universe"
+                      onClick={this.openUniverseMenu}>
+            <UniverseIcon />
+          </IconButton>
+        </Tooltip>
         {renderUniverseMenu}
       </div>
     );
