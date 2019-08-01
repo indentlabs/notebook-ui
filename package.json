@@ -17,7 +17,7 @@
     "@material-ui/icons": "^3.0.2",
     "@storybook/addon-actions": "^5.0.11",
     "@storybook/addon-links": "^5.0.11",
-    "@storybook/addons": "^5.0.11",
+    "@storybook/addons": "^5.1.10",
     "@storybook/react": "^5.0.11",
     "babel-loader": "^8.0.6",
     "material-components-web": "^2.2.0",
